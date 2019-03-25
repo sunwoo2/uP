@@ -12,10 +12,10 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-.c.o:
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+#.c.o:
+#	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-assem: main.cpp CCode.cpp CDecode.cpp
+assem: $(OBJS:.o=.cpp)
 	@echo "Compiling Assembly"
 	$(CXX) $(CXXFLAGS) -S main.cpp
 	$(CXX) $(CXXFLAGS) -S CCode.cpp
