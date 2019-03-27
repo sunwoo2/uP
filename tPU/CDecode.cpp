@@ -9,11 +9,6 @@ bool CT1DecodeDirectFetch::do_fetch_from(int PC){
 		return false;
 }
 
-void CT1DecodeDirectFetch::show_instruction(){
-	if(m_instruction.OPCODE == 3)
-		cout << "MOV3 " << "R" << m_instruction.OP1 << ", #" << m_instruction.OP2 << endl;
-}
-
 bool CT1DecodeDirectFetch::do_decode(){
 	int decoded = 0;
 
@@ -65,3 +60,12 @@ bool CT1DecodeDirectFetch::do_decode(){
 
 	return true;
 }
+
+void CT1DecodeDirectFetch::show_instruction(){
+	if(m_instruction.OPCODE == MOV3){
+		cout << "Decoding : ";
+		cout << "MOV3 " << "R" << m_instruction.OP1 << ", #" << m_instruction.OP2 << endl;
+	}
+}
+
+

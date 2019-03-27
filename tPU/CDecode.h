@@ -5,6 +5,10 @@
 
 using namespace std;
 
+enum {R0=0,R1,R2,R3,R4,R5,R6,R7,R8,R9,R10,R11,R12,R13,R14,R15};
+
+enum {MOV0=0,MOV1,MOV2,MOV3,ADD,SUB,JZ};
+
 class CDecode {
 	public:
 		CDecode() {}
@@ -12,7 +16,7 @@ class CDecode {
 };
 
 typedef struct{
-	unsigned int OPCODE : 4;
+	unsigned int OPCODE : 4;	// 4bit
 	unsigned int OP1	: 4;
 			 int OP2	: 8;
 } SInstruction;
@@ -27,8 +31,12 @@ class CT1DecodeDirectFetch : public CDecode {
 
 		void show_instruction();
 
+		unsigned int get_opcode() { return m_instruction.OPCODE; }
+		unsigned int get_op1() { return m_instruction.OP1; }
+			     int get_op2() { return m_instruction.OP2; }
+
 	private:
 		CFlash1KWord& m_code_memory;
-		string m_inst_buffer;
-		SInstruction m_instruction;
+		string        m_inst_buffer;
+		SInstruction  m_instruction;
 };

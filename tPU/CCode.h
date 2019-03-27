@@ -20,7 +20,7 @@ public:
 
 	string& code_at(int addr);	// & : reference (like Pointer of C)
 
-	int code_memory_size() { return 1024; }		// 정보은닉, 캡슐화, 추상화 (모듈이 바껴도 쉽게 바꿀수 있음)
+	int code_memory_size() { return 1024; }		
 
 private:
 	string m_filename;

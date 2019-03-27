@@ -1,6 +1,6 @@
 .SUFFIXES: .c .o
 
-OBJS = main.o CCode.o CDecode.o
+OBJS = main.o CCode.o CDecode.o CRegister.o CExecute.o
 TARGET = tpu
 CXX = g++
 CXXFLAGS = -W -Wall -O2
@@ -20,6 +20,8 @@ assem: $(OBJS:.o=.cpp)
 	$(CXX) $(CXXFLAGS) -S main.cpp
 	$(CXX) $(CXXFLAGS) -S CCode.cpp
 	$(CXX) $(CXXFLAGS) -S CDecode.cpp
+	$(CXX) $(CXXFLAGS) -S CRegister.cpp
+	$(CXX) $(CXXFLAGS) -S CExecute.cpp
 
 clean:
 	@echo "Deleting"
