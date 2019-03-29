@@ -1,5 +1,5 @@
 .SUFFIXES: .c .o
-
+ 
 OBJS = main.o CCode.o CDecode.o CRegister.o CExecute.o
 TARGET = tpu
 CXX = g++
