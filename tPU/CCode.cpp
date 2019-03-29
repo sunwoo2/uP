@@ -10,12 +10,12 @@ CFlash1KWord::CFlash1KWord(char* filename, int line){
 	m_line = line;
 
 	ifstream infile;
-	infile.open(filename, ios::in);
+	infile.open(m_filename, ios::in);
 
 	int addr = 0;
 	char bit;
-	while(addr < line){
-		for(int i=0; i<16; i++){
+	while(addr < m_line){
+		for(int i=0; i<ISA_length(); i++){
 			infile >> bit;	
 			m_code[addr] += bit;
 		}

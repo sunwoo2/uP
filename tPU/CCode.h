@@ -5,26 +5,26 @@
 using namespace std;
 
 class CCode {
-public:
-	CCode() {}
-	virtual ~CCode() {}
+	public:
+		CCode() {}
+		virtual ~CCode() {}
 
-private:
+	private:
 };
 
-// inheritance
-class CFlash1KWord : public CCode {	// Flash Memory (Program Memory)
-public: 
-	CFlash1KWord(char* filename, int line);
-	virtual ~CFlash1KWord();
+class CFlash1KWord : public CCode {	
+	public: 
+		CFlash1KWord(char* filename, int line);
+		virtual ~CFlash1KWord();
 
-	string& code_at(int addr);	// & : reference (like Pointer of C)
+		string& code_at(int addr);	
 
-	int code_memory_size() { return 1024; }		
+		int code_memory_size() { return 1024; }		
+		int ISA_length() { return 16; }
 
-private:
-	string m_filename;
-	int m_line;
-	string m_code[1024];
+	private:
+		string 	m_filename;
+		int 	m_line;
+		string 	m_code[1024];
 };
 
