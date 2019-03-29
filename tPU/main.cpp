@@ -31,7 +31,6 @@ int main(int argc, char* argv[]){
 		decode.show_instruction();
 		execute.do_execute();
 	}
-	
 	regs.show_regs();
 	 	
 	return 0;

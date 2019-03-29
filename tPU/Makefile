@@ -12,9 +12,6 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-#.c.o:
-#	$(CXX) $(CXXFLAGS) -c -o $@ $<
-
 assem: $(OBJS:.o=.cpp)
 	@echo "Compiling Assembly"
 	$(CXX) $(CXXFLAGS) -S main.cpp

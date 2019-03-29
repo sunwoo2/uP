@@ -8,8 +8,6 @@ class CExecute {
 	public:
 		CExecute () {}
 		virtual ~CExecute () {}
-
-	private:
 };
 
 class CT1ExecuteTinyUnit : public CExecute {
