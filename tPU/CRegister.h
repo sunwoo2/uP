@@ -11,7 +11,7 @@ class C16RegisterFile : public CRegister {
         C16RegisterFile() {}
         virtual ~C16RegisterFile() {}
 
-        void write_on_reg(unsigned int index, int data) { m_regs[index] = data; }
+		void write_on_reg(unsigned int index, int data) { m_regs[index] = data; }
         int read_from_reg(unsigned int index)           { return m_regs[index]; }
 
 		void show_regs();
