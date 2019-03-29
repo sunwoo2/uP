@@ -16,7 +16,7 @@ class CDecode {
 };
 
 typedef struct{
-	unsigned int OPCODE : 4;	// 4bit
+	unsigned int OPCODE : 4;	// This line indicate OPCODE is 4bits. Not 4Bytes!
 	unsigned int OP1	: 4;
 			 int OP2	: 8;
 } SInstruction;
@@ -24,6 +24,7 @@ typedef struct{
 class CT1DecodeDirectFetch : public CDecode {
 	public:
 		CT1DecodeDirectFetch(CFlash1KWord& code) : m_code_memory(code) {}
+//		CT1DecodeDirectFetch(CFlash1KWord m_code_memory) {}	// What is different thing?
 		virtual ~CT1DecodeDirectFetch() {}
 
 		bool do_fetch_from(int PC);

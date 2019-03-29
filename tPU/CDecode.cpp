@@ -67,5 +67,3 @@ void CT1DecodeDirectFetch::show_instruction(){
 		cout << "MOV3 " << "R" << m_instruction.OP1 << ", #" << m_instruction.OP2 << endl;
 	}
 }
-
-
