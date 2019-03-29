@@ -1,7 +1,7 @@
 #include "CCode.h"
 #include "CDecode.h"
 #include "CRegister.h"
-
+  
 #pragma once
 
 class CExecute {

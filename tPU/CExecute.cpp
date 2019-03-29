@@ -2,7 +2,7 @@
 #include "CDecode.h"
 #include "CRegister.h"
 #include "CExecute.h"
-
+  
 bool CT1ExecuteTinyUnit::do_execute() {
 
 	if(m_decode_unit.get_opcode() == MOV3){
