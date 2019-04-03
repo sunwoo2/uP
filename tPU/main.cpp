@@ -22,8 +22,8 @@ int main(int argc, char* argv[]){
 		cout << code_memory.code_at(i) << endl;
 
 	CT1DecodeDirectFetch decode(code_memory);
-	C16RegisterFile regs;
-	CT1ExecuteTinyUnit execute(decode, regs);
+	C16RegisterFile 	 regs;
+	CT1ExecuteTinyUnit 	 execute(decode, regs);
 
 	for(int i=0; i<atoi(argv[2]); i++){
 		decode.do_fetch_from(i);
