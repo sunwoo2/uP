@@ -26,7 +26,7 @@ clean:
 
 run:
 	@echo "Executing"
-	./$(TARGET) file.bin 4
+	./$(TARGET) file.bin 7
 
 help:
 	@echo "make all"
