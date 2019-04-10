@@ -1,6 +1,6 @@
 .SUFFIXES: .c .o
  
-OBJS = main.o CCode.o CDecode.o CRegister.o CExecute.o
+OBJS = main.o CCode.o CDecode.o CRegister.o CMemory.o CExecute.o
 TARGET = tpu
 CXX = g++
 CXXFLAGS = -W -Wall -O2
@@ -18,6 +18,7 @@ assem: $(OBJS:.o=.cpp)
 	$(CXX) $(CXXFLAGS) -S CCode.cpp
 	$(CXX) $(CXXFLAGS) -S CDecode.cpp
 	$(CXX) $(CXXFLAGS) -S CRegister.cpp
+	$(CXX) $(CXXFLAGS) -S CMemory.cpp
 	$(CXX) $(CXXFLAGS) -S CExecute.cpp
 
 clean:
@@ -26,7 +27,8 @@ clean:
 
 run:
 	@echo "Executing"
-	./$(TARGET) file.bin 7
+#./$(TARGET) file.bin 12
+	./$(TARGET) test.bin 19
 
 help:
 	@echo "make all"

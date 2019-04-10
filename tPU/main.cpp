@@ -6,6 +6,7 @@
 #include "CDecode.h"
 #include "CExecute.h"
 #include "CRegister.h"
+#include "CMemory.h"
 
 using namespace std;
 
@@ -23,7 +24,8 @@ int main(int argc, char* argv[]){
 
 	CT1DecodeDirectFetch decode(code_memory);
 	C16RegisterFile 	 regs;
-	CT1ExecuteTinyUnit 	 execute(decode, regs);
+	CSRAM_256W           mems;
+	CT1ExecuteTinyUnit 	 execute(decode, regs, mems);
 
 	for(int i=0; i<atoi(argv[2]); i++){
 		decode.do_fetch_from(i);
@@ -32,6 +34,19 @@ int main(int argc, char* argv[]){
 		execute.do_execute();
 	}
 	regs.show_regs();
-	 	
+    mems.show_mems(0,9);
+    mems.show_mems(250,255);
+
+    int decoded = 0;
+		decoded |= 128;	// b 1000 0000
+		decoded |= 64;	// b 0100 0000 
+		decoded |= 32;	// b 0010 0000 
+		decoded |= 16;	// b 0001 0000 
+		decoded |= 8;	// b 0000 1000
+		decoded |= 4;	// b 0000 0100
+		decoded |= 2;	// b 0000 0010
+		decoded |= 1;	// b 0000 0001
+    cout << decoded << endl;
+
 	return 0;
 }
