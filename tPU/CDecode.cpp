@@ -62,14 +62,28 @@ bool CT1DecodeDirectFetch::do_decode(){
 }
 
 void CT1DecodeDirectFetch::show_instruction(){
+
 	if(m_instruction.OPCODE == MOV3){
-//		cout << "Decoding : ";
 		cout << "MOV3 " << "R" << m_instruction.OP1 << ", #" << m_instruction.OP2 << endl;
+
 	}else if(m_instruction.OPCODE == ADD){
-        unsigned int OP2 = m_instruction.OP2 >> 4;
+        unsigned int OP2 = (m_instruction.OP2 >> 4) & 0xF;
 		cout << "ADD  " << "R" << m_instruction.OP1 << ", R" << OP2 << endl;
+
 	}else if(m_instruction.OPCODE == SUB){
-        unsigned int OP2 = m_instruction.OP2 >> 4;
+        unsigned int OP2 = (m_instruction.OP2 >> 4) & 0xF;
 		cout << "SUB  " << "R" << m_instruction.OP1 << ", R" << OP2 << endl;
+
+	}else if(m_instruction.OPCODE == MOV0){
+        unsigned int OP2 = m_instruction.OP2 & 0xFF;    
+		cout << "MOV0 " << "R" << m_instruction.OP1 << ", [" << OP2 << "]" << endl;
+
+	}else if(m_instruction.OPCODE == MOV1){
+        unsigned int OP2 = m_instruction.OP2 & 0xFF; 
+		cout << "MOV1 " << "[" << OP2 << "], R" << m_instruction.OP1 << endl;
+
+	}else if(m_instruction.OPCODE == MUL){
+        unsigned int OP2 = (m_instruction.OP2 >> 4) & 0xF;
+		cout << "MUL  " << "R" << m_instruction.OP1 << ", R" << OP2 << endl;
 	}
 }
