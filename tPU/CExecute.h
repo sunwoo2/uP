@@ -1,6 +1,7 @@
 #include "CCode.h"
 #include "CDecode.h"
 #include "CRegister.h"
+#include "CMemory.h"
   
 #pragma once
 
@@ -13,7 +14,9 @@ class CExecute {
 class CT1ExecuteTinyUnit : public CExecute {
 	public:
 		CT1ExecuteTinyUnit(CT1DecodeDirectFetch& decode, 
-							C16RegisterFile& regs) : m_decode_unit(decode), m_regs(regs) {}
+							C16RegisterFile& regs,
+                            CSRAM_256W& mems) 
+            : m_decode_unit(decode), m_regs(regs), m_mems(mems) {}
 		virtual ~CT1ExecuteTinyUnit() {}
 
 		bool do_execute();
@@ -21,4 +24,5 @@ class CT1ExecuteTinyUnit : public CExecute {
 	private:
 		CT1DecodeDirectFetch& m_decode_unit;
 		C16RegisterFile&      m_regs;
+        CSRAM_256W&           m_mems;
 };
