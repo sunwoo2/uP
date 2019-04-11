@@ -1,4 +1,7 @@
 push:
+	git add .
+	git commit -m "-"
+	git push
 #	git add tPU/CCode.cpp tPU/CCode.h
 #	git commit -m "Code Memory"
 #	git add tPU/CDecode.cpp tPU/CDecode.h
@@ -9,6 +12,3 @@ push:
 #	git commit -m "Register"
 #	git add tPU/file.bin
 #	git commit -m "Binary(Machine) code"
-#	git add .
-#	git commit -m "-"
-#	git push
