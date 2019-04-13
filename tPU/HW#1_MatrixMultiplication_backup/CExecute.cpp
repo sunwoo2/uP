@@ -8,10 +8,10 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
     // MOV3 R0, #3 : R0 = 3
 	if(m_decode_unit.get_opcode() == MOV3){
-//		cout << "Executing" << endl;
 
 		unsigned int reg_index = m_decode_unit.get_op1();
-	             int 	  data = m_decode_unit.get_op2();
+	             int 	  data = m_decode_unit.get_op2();             // -128~127
+	    //unsigned int      data = m_decode_unit.get_op2() & 0xFF;    // 0~255 
 
 		m_regs.write_on_reg(reg_index, data);
 
@@ -63,7 +63,6 @@ bool CT1ExecuteTinyUnit::do_execute() {
 	}else if( m_decode_unit.get_opcode() == MOV1){
 
 		unsigned int reg_index = m_decode_unit.get_op1();
-		//unsigned int mem_addr  = m_decode_unit.get_op2();     // 11111111 못받음 에러남
 		unsigned int mem_addr  = m_decode_unit.get_op2() & 0xFF;
 
         int Rn = m_regs.read_from_reg(reg_index);

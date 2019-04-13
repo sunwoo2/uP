@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/* Original
 void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
 	cout << "==== Memory (" << start_addr << "~" << end_addr << ") ====" << endl;
 	for(unsigned int i=start_addr; i<=end_addr; i++)
@@ -11,6 +12,22 @@ void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
 		else
 			cout << "M[" << i << "] = " << read_from_memory(i) << endl;
 	cout << "======================" << endl;
+}
+*/
+
+void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
+	cout << "==== Memory (" << start_addr << "~" << end_addr << ") ====" << endl;
+
+	for(unsigned int i=start_addr; i<=end_addr; i++){
+		if( (i%5) == 4 && i>0)
+            printf("%4d\n", read_from_memory(i));
+		else
+            printf("%4d", read_from_memory(i));
+        if( (i==24) || (i==49) )
+            printf("\n");
+    }
+
+	cout << "=======================" << endl;
 }
 
 void CSRAM_256W::show_mems_matrix(unsigned int start_addr, unsigned int end_addr){

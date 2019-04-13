@@ -19,6 +19,7 @@ class CSRAM_256W : public CMemory {
         int  read_from_memory(unsigned int index)          { return m_mems[index]; }
 
         void show_mems(unsigned int start_addr, unsigned int end_addr);
+        void show_mems_matrix(unsigned int start_addr, unsigned int end_addr);
 
     private:
         int m_mems[256];

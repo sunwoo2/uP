@@ -12,6 +12,9 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+assembler: assembler.c
+	gcc -o assembler assembler.c
+
 assem: $(OBJS:.o=.cpp)
 	@echo "Compiling Assembly"
 	$(CXX) $(CXXFLAGS) -S main.cpp
@@ -23,12 +26,11 @@ assem: $(OBJS:.o=.cpp)
 
 clean:
 	@echo "Deleting"
-	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s)
+	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s) 
 
 run:
 	@echo "Executing"
-#./$(TARGET) file.bin 12
-	./$(TARGET) test.bin 19
+	./$(TARGET) file.bin 114
 
 help:
 	@echo "make all"

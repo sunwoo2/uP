@@ -12,8 +12,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-tinyasm:
-	gcc -o tinyasm tinyasm.c
+assembler: assembler.c
+	gcc -o assembler assembler.c
 
 assem: $(OBJS:.o=.cpp)
 	@echo "Compiling Assembly"
@@ -26,12 +26,11 @@ assem: $(OBJS:.o=.cpp)
 
 clean:
 	@echo "Deleting"
-	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s) tinyasm
+	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s) 
 
 run:
 	@echo "Executing"
-#./$(TARGET) file.bin 12
-	./$(TARGET) test.bin 19
+	./$(TARGET) file.bin 114
 
 help:
 	@echo "make all"

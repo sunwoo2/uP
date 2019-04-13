@@ -22,5 +22,5 @@ class CSRAM_256W : public CMemory {
         void show_mems_matrix(unsigned int start_addr, unsigned int end_addr);
 
     private:
-        int m_mems[256];
+        int m_mems[512];    // 10X10으로 해보자 만약 성공하면 512W로 이름 바꾸기
 };

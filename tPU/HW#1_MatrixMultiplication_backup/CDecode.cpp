@@ -3,7 +3,6 @@
 bool CT1DecodeDirectFetch::do_fetch_from(int PC){
 	if(PC>=0 && PC<m_code_memory.code_memory_size()){
 		m_inst_buffer = m_code_memory.code_at(PC);
-//		cout << "Fetching from code memory at " << PC << endl;
 		return true;
 	}else
 		return false;
@@ -24,8 +23,8 @@ bool CT1DecodeDirectFetch::do_decode(){
 
 	m_instruction.OPCODE = decoded;
 
-	decoded = 0;
 	// Decoding OP1
+	decoded = 0;
 	if(m_inst_buffer[4] == '1')
 		decoded |= 8;	// b 1000
 	if(m_inst_buffer[5] == '1')
@@ -37,8 +36,8 @@ bool CT1DecodeDirectFetch::do_decode(){
 
 	m_instruction.OP1 = decoded;
 
-	decoded = 0;
 	// Decoding OP2
+	decoded = 0;
 	if(m_inst_buffer[8] == '1')
 		decoded |= 128;	// b 1000 0000
 	if(m_inst_buffer[9] == '1')
