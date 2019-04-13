@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <sys/time.h>
+#include <string.h>
   
 #include "CCode.h"
 #include "CDecode.h"
@@ -49,8 +50,11 @@ int main(int argc, char* argv[]){
     //
 
 	regs.show_regs();
-    mems.show_mems(0,74);
-    //mems.show_mems_matrix(0,26);
+    if(strcmp(argv[1], "file.bin") == 0){
+        mems.show_mems_matrix(0,26);
+    }else if(strcmp(argv[1], "file_5X5_R4.bin") == 0){
+        mems.show_mems(0,74);
+    }
 
 	return 0;
 }

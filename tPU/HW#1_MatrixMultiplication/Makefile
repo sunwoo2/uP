@@ -7,7 +7,7 @@ CXXFLAGS = -W -Wall -O2
 
 print-%: ; @echo $*=$($*)
 
-all: $(TARGET)
+all: $(TARGET) assembler calculate_word initialize
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
@@ -15,25 +15,29 @@ $(TARGET): $(OBJS)
 assembler: assembler.c
 	gcc -o assembler assembler.c
 
-assem: $(OBJS:.o=.cpp)
-	@echo "Compiling Assembly"
-	$(CXX) $(CXXFLAGS) -S main.cpp
-	$(CXX) $(CXXFLAGS) -S CCode.cpp
-	$(CXX) $(CXXFLAGS) -S CDecode.cpp
-	$(CXX) $(CXXFLAGS) -S CRegister.cpp
-	$(CXX) $(CXXFLAGS) -S CMemory.cpp
-	$(CXX) $(CXXFLAGS) -S CExecute.cpp
+calculate: calculate_word.c
+	gcc -o calculate_word calculate_word.c
+
+initialize: initialize.c
+	gcc -o initialize initialize.c
 
 clean:
 	@echo "Deleting"
-	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s) 
+	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s) assembler initialize calculate_word
 
 run:
 	@echo "Executing"
 	./$(TARGET) file.bin 114
 
+run1:
+	@echo "Executing"
+	./$(TARGET) file_5X5_R4.bin 700
+
 help:
 	@echo "make all"
-	@echo "make assem"
+	@echo "make assembler"
+	@echo "make initialize"
+	@echo "make calculate_word"
 	@echo "make clean"
-	@echo "make run"
+	@echo "make run - file.bin 114"
+	@echo "make run1 - file_5X5_R4.bin 700"

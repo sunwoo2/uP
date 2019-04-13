@@ -15,6 +15,7 @@ void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
 }
 */
 
+// For file_5X5_R4.bin
 void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
 	cout << "==== Memory (" << start_addr << "~" << end_addr << ") ====" << endl;
 
@@ -30,6 +31,7 @@ void CSRAM_256W::show_mems(unsigned int start_addr, unsigned int end_addr){
 	cout << "=======================" << endl;
 }
 
+// For file.bin
 void CSRAM_256W::show_mems_matrix(unsigned int start_addr, unsigned int end_addr){
 	cout << "==== Memory (" << start_addr << "~" << end_addr << ") Maxtrix form ====" << endl;
 
