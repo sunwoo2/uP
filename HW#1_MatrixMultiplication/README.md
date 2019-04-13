@@ -1,4 +1,4 @@
-## Date
+## Source code
 * file.* - about origin HW 3X3 matrix
 * file_nXn.* - about nXn matrix
 * file_5X5_R4.* - about case R=4, n=5
