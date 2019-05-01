@@ -85,5 +85,9 @@ void CT1DecodeDirectFetch::show_instruction(){
 	}else if(m_instruction.OPCODE == MUL){
         unsigned int OP2 = (m_instruction.OP2 >> 4) & 0xF;
 		cout << "MUL  " << "R" << m_instruction.OP1 << ", R" << OP2 << endl;
-	}
+
+    }else if(m_instruction.OPCODE == MOV3){
+		cout << "JZ " << "R" << m_instruction.OP1 << ", " << m_instruction.OP2 << endl;
+    }
+
 }
