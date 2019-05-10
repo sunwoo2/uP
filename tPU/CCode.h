@@ -27,4 +27,3 @@ class CFlash1KWord : public CCode {
 		int 	m_line;
 		string 	m_code[1024];
 };
-
