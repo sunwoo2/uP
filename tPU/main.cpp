@@ -28,15 +28,17 @@ int main(int argc, char* argv[]){
 	CT1ExecuteTinyUnit 	 execute(decode, regs, mems);
 
     int size = atoi(argv[2]);
+    int total_clks = 0;
 	//for(int i=0; i<atoi(argv[2]); i++){
     while( regs.get_PC() < size){
         decode.do_fetch_from(regs.get_PC());
 		//decode.do_fetch_from(i);
 		decode.do_decode();
 		decode.show_instruction();
-		execute.do_execute();
+		total_clks += execute.do_execute();
 	}
 
+    cout << "Total Clocks: " << total_clks << endl;
 	regs.show_regs();
     mems.show_mems(0,9);
     mems.show_mems(250,255);

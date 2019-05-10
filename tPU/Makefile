@@ -24,7 +24,8 @@ clean:
 
 run:
 	@echo "Executing"
-	./$(TARGET) file.bin 20
+	#./$(TARGET) file.bin 20
+	./$(TARGET) file1.bin 22
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $<
