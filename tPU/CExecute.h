@@ -19,7 +19,7 @@ class CT1ExecuteTinyUnit : public CExecute {
             : m_decode_unit(decode), m_regs(regs), m_mems(mems) {}
 		virtual ~CT1ExecuteTinyUnit() {}
 
-		bool do_execute();
+		int do_execute();
 
 	private:
 		CT1DecodeDirectFetch& m_decode_unit;

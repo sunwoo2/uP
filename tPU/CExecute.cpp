@@ -3,8 +3,12 @@
 #include "CRegister.h"
 #include "CExecute.h"
 #include "CMemory.h"
+
+// bit masking 하는것 자체가 unsigned 되는 거임. 그래도 형식을 표현하기위해 unsigned int로 (?)
+
+int clks[9] = {8,8,12,6,4,4,12,30,2};
   
-bool CT1ExecuteTinyUnit::do_execute() {
+int CT1ExecuteTinyUnit::do_execute() {
 
     // MOV3 R0, #3 : R0 = 3
 	if(m_decode_unit.get_opcode() == MOV3){
@@ -17,7 +21,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[MOV3];
 
     // ADD R0, R1 : R0 = R0 + R1 
 	}else if( m_decode_unit.get_opcode() == ADD){
@@ -34,7 +38,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[ADD];
 
     // SUB R0, R1 : R0 = R0 - R1 
 	}else if( m_decode_unit.get_opcode() == SUB){
@@ -51,7 +55,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[SUB];
 
     // MOV0 R1, [3] : R1 <- M[3]
 	}else if( m_decode_unit.get_opcode() == MOV0){
@@ -65,7 +69,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[MOV0];
 
     // MOV1 [3], R1 : M[3] <- R1
 	}else if( m_decode_unit.get_opcode() == MOV1){
@@ -79,7 +83,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[MOV1];
 
     // MUL R0, R1 : R0 = R0 * R1 
 	}else if( m_decode_unit.get_opcode() == MUL){
@@ -96,7 +100,7 @@ bool CT1ExecuteTinyUnit::do_execute() {
 
         m_regs.set_PC(m_regs.get_PC()+1);
 
-		return true;
+		return clks[MUL];
 
     // JZ R0, 5 (if R0 == 0, then PC+1+3)
 	}else if( m_decode_unit.get_opcode() == JZ){
@@ -112,7 +116,36 @@ bool CT1ExecuteTinyUnit::do_execute() {
             m_regs.set_PC(pc+offset);
         }
 
-		return true;
+		return clks[JZ];
+
+    // MOV2 [R0], R1 : M[R0] <- R1
+	}else if( m_decode_unit.get_opcode() == MOV2){
+
+        unsigned int reg_n = m_decode_unit.get_op1();
+		unsigned int reg_m = m_decode_unit.get_op2() & 0xF;
+
+        int Rn = m_regs.read_from_reg(reg_n);
+        int Rm = m_regs.read_from_reg(reg_m);
+
+        m_mems.write_on_memory(Rn, Rm);
+
+        m_regs.set_PC(m_regs.get_PC()+1);
+
+		return clks[MOV2];
+
+    // MOV4 Rn, Rm : Rn <- Rm
+	}else if( m_decode_unit.get_opcode() == MOV4){
+
+        unsigned int reg_n = m_decode_unit.get_op1();
+		unsigned int reg_m = (m_decode_unit.get_op2() >> 4) & 0xF;
+
+        int Rm = m_regs.read_from_reg(reg_m);
+
+		m_regs.write_on_reg(reg_n, Rm);
+
+        m_regs.set_PC(m_regs.get_PC()+1);
+
+		return clks[MOV4];
 
     }else{
 		cout << "Not executable instruction, not yet implemented sorry...!!" << endl;
