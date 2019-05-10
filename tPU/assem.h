@@ -10,4 +10,4 @@ instruction program[1024];
 int	    	memory[256] = {0};
 int 		regs[16]    = {0};	
 
-enum { MOV0=0, MOV1, MOV2, MOV3, ADD, SUB, JZ, MUL };
+enum { MOV0=0, MOV1, MOV2, MOV3, ADD, SUB, JZ, MUL, MOV4 };

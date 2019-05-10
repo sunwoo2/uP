@@ -136,7 +136,7 @@ void asm_to_bin(char buffer[], int line){
 		for(int i=1; isdigit(s[i])!=0; i++)
 			num[i-1] = s[i];
 		OP2 = atoi(num);
-		for(int i=3; i>=0 && OP2!=0; i--){	
+		for(int i=7; i>=4 && OP2!=0; i--){	
 			if( OP2%2 == 1)
 				bin1[i] = '1';
 			OP2 /= 2;
@@ -363,6 +363,44 @@ void asm_to_bin(char buffer[], int line){
         memset(bin, 0, sizeof(bin));
         memset(bin1, 0, sizeof(bin1));
         memset(num, '\0', sizeof(num));
+
+	}else if(strcmp(s, "MOV4") == 0){
+
+		s = strtok(NULL, " ");		
+		for(int i=1; isdigit(s[i])!=0; i++)
+			num[i-1] = s[i];
+		OP1 = atoi(num);		
+		for(int i=3; i>=0 && OP1!=0; i--){
+			if( OP1%2 == 1)
+				bin[i] = '1';
+			OP1 /= 2;
+		}
+        memset(num, '\0', sizeof(num));
+
+		s = strtok(NULL, " ");	
+		for(int i=1; isdigit(s[i])!=0; i++)
+			num[i-1] = s[i];
+		OP2 = atoi(num);
+		for(int i=3; i>=0 && OP2!=0; i--){
+			if( OP2%2 == 1)
+				bin1[i] = '1';
+			OP2 /= 2;
+		}
+        memset(num, '\0', sizeof(num));
+
+		printf("1000");
+		for(int i=0; i<4; i++){
+			printf("%c", bin[i]);
+		}
+		for(int i=0; i<8; i++){
+			printf("%c", bin1[i]);
+		}
+		printf("\n");
+
+        memset(bin, 0, sizeof(bin));
+        memset(bin1, 0, sizeof(bin1));
+        memset(num, '\0', sizeof(num));
+
     }
 
 }
