@@ -19,8 +19,8 @@ int main(int argc, char* argv[]){
 
 	CFlash1KWord code_memory(argv[1], atoi(argv[2]));
 
-	for(int i=0; i<atoi(argv[2]); i++)
-		cout << code_memory.code_at(i) << endl;
+	//for(int i=0; i<atoi(argv[2]); i++)
+    //cout << code_memory.code_at(i) << endl;
 
 	CT1DecodeDirectFetch decode(code_memory);
 	C16RegisterFile 	 regs;
@@ -34,14 +34,14 @@ int main(int argc, char* argv[]){
         decode.do_fetch_from(regs.get_PC());
 		//decode.do_fetch_from(i);
 		decode.do_decode();
-		decode.show_instruction();
+		//decode.show_instruction();
 		total_clks += execute.do_execute();
 	}
 
     cout << "Total Clocks: " << total_clks << endl;
 	regs.show_regs();
-    mems.show_mems(0,9);
-    mems.show_mems(250,255);
+    //mems.show_mems(0,9);
+    //mems.show_mems(250,255);
 
 
 	return 0;
