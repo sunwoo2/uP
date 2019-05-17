@@ -15,7 +15,7 @@ clean:
 
 run:
 	@echo "Executing"
-	./$(TARGET) src_naive.bin 17
+	./$(TARGET) fib_naive.bin 17
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $<
