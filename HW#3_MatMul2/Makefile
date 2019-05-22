@@ -9,18 +9,9 @@ print-%: ; @echo $*=$($*)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-assem: $(OBJS:.o=.cpp)
-	@echo "Compiling Assembly"
-	$(CXX) $(CXXFLAGS) -S main.cpp
-	$(CXX) $(CXXFLAGS) -S CCode.cpp
-	$(CXX) $(CXXFLAGS) -S CDecode.cpp
-	$(CXX) $(CXXFLAGS) -S CRegister.cpp
-	$(CXX) $(CXXFLAGS) -S CMemory.cpp
-	$(CXX) $(CXXFLAGS) -S CExecute.cpp
-
 clean:
 	@echo "Deleting"
-	rm -rf $(TARGET) $(OBJS) $(OBJS:.o=.s)
+	rm -rf $(TARGET) $(OBJS)
 
 run:
 	@echo "Executing"
@@ -33,6 +24,5 @@ run:
 	$(CXX) $(CXXFLAGS) -c $<
 
 help:
-	@echo "make assem"
 	@echo "make run"
 	@echo "make clean"
